@@ -1,8 +1,9 @@
 #!/bin/bash
 
 DIR=$(pwd)
-echo $DIR
-for y in `seq -w $y $y`; do
+YEAR=$(date +%Y)
+
+for y in `seq -w $YEAR $YEAR`; do
   mkdir $DIR/$y
 
   for i in `seq -w 1 25`; do
