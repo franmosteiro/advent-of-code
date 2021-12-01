@@ -1,13 +1,16 @@
+require "../file_helper.rb"
+
 class Day01Part1
     
+    attr_reader :input_contents
+
     def initialize(input)
-        @input_contents = IO.read(input)
+        @input_contents = FileHelper.parse(input)
     end
 
     def part02
 
-        @input_contents
-            .lines
+        input_contents
             .map(&:to_i)
             .each_cons(3)
             .map(&:sum)
