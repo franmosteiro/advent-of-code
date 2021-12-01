@@ -5,17 +5,17 @@ class Day01Part1
     end
 
     def part01
-    
-        increased = 0
 
-        @input_contents.lines.map(&:to_i).each_cons(2) { |first, second| 
-            increased = increased + 1 unless first > second 
+        @input_contents
+            .lines
+            .map(&:to_i)
+            .each_cons(2)
+            .count { |first, second| 
+                first < second 
         }
-
-        p increased
 
     end
 
 end
 
-Day01Part1.new("./day-01-input.txt").part01()
+p Day01Part1.new("./day-01-input.txt").part01
