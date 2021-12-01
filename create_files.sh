@@ -8,7 +8,7 @@ for y in `seq -w $YEAR $YEAR`; do
 
   for i in `seq -w 1 25`; do
     mkdir $DIR/$y/day-$i
-    touch $DIR/$y/day-$i/README.txt
+    touch $DIR/$y/day-$i/README.md
     touch $DIR/$y/day-$i/day-$i-part-1.rb
     if [ $i -ne '25' ]
     then
