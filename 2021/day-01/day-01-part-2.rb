@@ -1,6 +1,6 @@
 require "../file_helper.rb"
 
-class Day01Part1
+class Day01Part2
     
     attr_reader :input_contents
 
@@ -23,4 +23,4 @@ class Day01Part1
 
 end
 
-p Day01Part1.new("./day-01-input.txt").part02
+p Day01Part2.new("./day-01-input.txt").part02
