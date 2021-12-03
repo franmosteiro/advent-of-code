@@ -1,5 +1,4 @@
 require "../file_helper.rb"
-require "pry"
 
 class Day03Part2
     
@@ -14,14 +13,15 @@ class Day03Part2
       oxygen_generator_rating = readings.dup
       co2_scrubber_rating = readings.dup
 
-      (0..readings.size).to_a.each {|i|
+      (0..readings.size).each {|i|
         most_common, _ = base_common_pattern(oxygen_generator_rating)
-        oxygen_generator_rating.reject!{|lines| most_common[i] != lines[i]}
+        oxygen_generator_rating.reject!{|reading| most_common[i] != reading[i]}
+        break if oxygen_generator_rating.size == 1
       }
 
-      (0..readings.size).to_a.each {|i|
+      (0..readings.size).each {|i|
         _, least_common = base_common_pattern(co2_scrubber_rating)
-        co2_scrubber_rating.reject!{|lines| least_common[i] != lines[i]}
+        co2_scrubber_rating.reject!{|reading| least_common[i] != reading[i]}
         break if co2_scrubber_rating.size == 1
       }
 
@@ -34,7 +34,7 @@ class Day03Part2
           .map {|diagnostic_line|  diagnostic_line.chars.map(&:to_i) }
           .transpose
           .map{|transposed| transposed.group_by(&:itself) }
-          .map{|columned| most_used_digit(columned) }
+          .map{|column| most_used_digit(column) }
           .map(&:first)
 
       least_common_bits = most_common_bits.join.chars.map{|bit| flip_bit(bit) }
