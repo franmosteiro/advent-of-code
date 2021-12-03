@@ -9,22 +9,26 @@ class Day03Part1
     end
 
     def part01
-      gamma_rate, epsilon_rate = calculate_gamma_and_epsilon_rates(readings)
-      gamma_rate * epsilon_rate
+      gamma_rate = calculate_gamma_rate(readings)
+      epsilon_rate = calculate_epsilon_rate(gamma_rate)
+      
+      gamma_rate.join.to_i(2) * epsilon_rate.join.to_i(2)
     end
 
-    def calculate_gamma_and_epsilon_rates(readings_list)
-      most_common_bits = 
-        readings_list
-          .map {|diagnostic_line|  diagnostic_line.chars.map(&:to_i) }
-          .transpose
-          .map{|transposed| transposed.group_by(&:itself) }
-          .map{|columned| most_used_digit(columned) }
-          .map(&:first)
+    def calculate_gamma_rate(readings_list)
+      readings_list
+        .map {|diagnostic_line|  diagnostic_line.chars.map(&:to_i) }
+        .transpose
+        .map{|transposed| transposed.group_by(&:itself) }
+        .map{|columned| most_used_digit(columned) }
+        .map(&:first)
+    end
 
-      least_common_bits = most_common_bits.join.chars.map{|bit| flip_bit(bit) }
-
-      [most_common_bits.join.to_i(2), least_common_bits.join.to_i(2)]
+    def calculate_epsilon_rate(gamma_rate)
+      gamma_rate
+        .join
+        .chars
+        .map{|bit| flip_bit(bit) }
     end
 
     def flip_bit(bit)
