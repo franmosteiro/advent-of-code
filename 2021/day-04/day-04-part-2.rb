@@ -35,27 +35,33 @@ class BingoGame
   end
 
   def play_game(bingo_card, matrix_of_boards)
-    bingo_making_number = nil
-    board_with_bingo = nil
-    bingo_card.each{|current_number|
-      matrix_of_boards.map { |bingo_board| bingo_board.check_number(current_number) }
-      bingo_making_number = current_number
-      board_with_bingo = matrix_of_boards.map(&:bingo?).find_index(true)
-      break if board_with_bingo
-    }
-    [bingo_making_number, board_with_bingo]
+    number_which_made_completed_bingo_the_last = nil
+    board_completing_bingo_last = nil
+
+    bingo_card.each do |current_bingo_card_number|
+        matrix_of_boards.map { |board| board.mark_as_found(current_bingo_card_number) }
+        number_which_made_completed_bingo_the_last = current_bingo_card_number
+        boards_without_bingo = matrix_of_boards.map(&:bingo?).count(false)
+        board_completing_bingo_last = matrix_of_boards.map(&:bingo?).find_index(false) if boards_without_bingo == 1
+        break if boards_without_bingo == 0
+    end
+
+    [number_which_made_completed_bingo_the_last, board_completing_bingo_last]
   end
 
-  def print_game_result(matrix_of_boards, board_with_bingo, bingo_making_number)
-    aggregate_of_unchecked_numbers_in_board = matrix_of_boards[board_with_bingo].aggregate_of_unchecked_numbers_in_board
-    puts "Score in wining board = #{aggregate_of_unchecked_numbers_in_board * bingo_making_number}."
+  def print_game_result(matrix_of_boards, board_completing_bingo_last, number_which_made_completed_bingo_the_last)
+    aggregate_of_unchecked_numbers_in_board = matrix_of_boards[board_completing_bingo_last].aggregate_of_unchecked_numbers_in_board
+    puts "Score in losing board = #{aggregate_of_unchecked_numbers_in_board * number_which_made_completed_bingo_the_last}."
   end
 
-  def part1()
+  def part2()
     boards_build_as_numbers = formated_boards()
     matrix_of_boards = build_matrix(boards_build_as_numbers)
-    bingo_making_number, board_with_bingo = play_game(bingo_card, matrix_of_boards)
-    print_game_result(matrix_of_boards, board_with_bingo, bingo_making_number)   
+    number_which_made_completed_bingo_the_last, board_completing_bingo_last = play_game(bingo_card, matrix_of_boards)
+
+    aggregate_of_unchecked_numbers_in_board = matrix_of_boards[board_completing_bingo_last].aggregate_of_unchecked_numbers_in_board
+    puts "Score in losing board = #{aggregate_of_unchecked_numbers_in_board * number_which_made_completed_bingo_the_last}."
+
   end
 end
 
@@ -67,7 +73,7 @@ class BingoBoard
     @columns = rows.transpose
   end
 
-  def check_number(number)
+  def mark_as_found(number)
     @rows = @rows.each { |row| row.reject! { |item| item == number } }
     @columns = @columns.each { |col| col.reject! { |item| item == number } }
   end
@@ -81,4 +87,4 @@ class BingoBoard
   end
 end
 
-BingoGame.new("day-04-input.txt").part1
+BingoGame.new("day-04-input.txt").part2
