@@ -38,7 +38,7 @@ class BingoGame
     number_which_formed_bingo = nil
     board_with_bingo = nil
     bingo_card.each{|current_number|
-      matrix_of_boards.map { |bingo_board| bingo_board.check_number(current_number) }
+      matrix_of_boards.map { |bingo_board| bingo_board.mark_as_found(current_number) }
       number_which_formed_bingo = current_number
       board_with_bingo = matrix_of_boards.map(&:bingo?).find_index(true)
       break if board_with_bingo
@@ -67,7 +67,7 @@ class BingoBoard
     @columns = rows.transpose
   end
 
-  def check_number(number)
+  def mark_as_found(number)
     @rows = @rows.each { |row| row.reject! { |item| item == number } }
     @columns = @columns.each { |col| col.reject! { |item| item == number } }
   end
