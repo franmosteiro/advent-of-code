@@ -35,27 +35,27 @@ class BingoGame
   end
 
   def play_game(bingo_card, matrix_of_boards)
-    bingo_making_number = nil
+    number_which_formed_bingo = nil
     board_with_bingo = nil
     bingo_card.each{|current_number|
       matrix_of_boards.map { |bingo_board| bingo_board.check_number(current_number) }
-      bingo_making_number = current_number
+      number_which_formed_bingo = current_number
       board_with_bingo = matrix_of_boards.map(&:bingo?).find_index(true)
       break if board_with_bingo
     }
-    [bingo_making_number, board_with_bingo]
+    [number_which_formed_bingo, board_with_bingo]
   end
 
-  def print_game_result(matrix_of_boards, board_with_bingo, bingo_making_number)
+  def print_game_result(matrix_of_boards, board_with_bingo, number_which_formed_bingo)
     aggregate_of_unchecked_numbers_in_board = matrix_of_boards[board_with_bingo].aggregate_of_unchecked_numbers_in_board
-    puts "Score in wining board = #{aggregate_of_unchecked_numbers_in_board * bingo_making_number}."
+    puts "Score in wining board = #{aggregate_of_unchecked_numbers_in_board * number_which_formed_bingo}."
   end
 
   def part1()
     boards_build_as_numbers = formated_boards()
     matrix_of_boards = build_matrix(boards_build_as_numbers)
-    bingo_making_number, board_with_bingo = play_game(bingo_card, matrix_of_boards)
-    print_game_result(matrix_of_boards, board_with_bingo, bingo_making_number)   
+    number_which_formed_bingo, board_with_bingo = play_game(bingo_card, matrix_of_boards)
+    print_game_result(matrix_of_boards, board_with_bingo, number_which_formed_bingo)   
   end
 end
 
