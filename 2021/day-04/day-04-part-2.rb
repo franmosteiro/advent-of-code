@@ -58,10 +58,7 @@ class BingoGame
     boards_build_as_numbers = formated_boards()
     matrix_of_boards = build_matrix(boards_build_as_numbers)
     number_which_made_completed_bingo_the_last, board_completing_bingo_last = play_game(bingo_card, matrix_of_boards)
-
-    aggregate_of_unchecked_numbers_in_board = matrix_of_boards[board_completing_bingo_last].aggregate_of_unchecked_numbers_in_board
-    puts "Score in losing board = #{aggregate_of_unchecked_numbers_in_board * number_which_made_completed_bingo_the_last}."
-
+    print_game_result(matrix_of_boards, board_completing_bingo_last, number_which_made_completed_bingo_the_last)
   end
 end
 
