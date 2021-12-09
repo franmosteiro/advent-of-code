@@ -15,10 +15,10 @@ Advent of Code 2021 🎄 Ruby Solutions
 | ✅ [Day 3: Binary Diagnostic](https://github.com/franmosteiro/advent-of-code/tree/main/2021/day-03)| 🌟 | 🌟 |
 | ✅ [Day  4: Giant Squid ](https://github.com/franmosteiro/advent-of-code/tree/main/2021/day-04)| 🌟 | 🌟 |
 | ✅ [Day  5: Hydrothermal Venture ](https://github.com/franmosteiro/advent-of-code/tree/main/2021/day-05)| 🌟 | 🌟 |
-| [Day  6: 🚧 ]()| | |
-| [Day  7: 🚧 ]()| | |
-| [Day  8: 🚧 ]()| | |
-| [Day  9: 🚧 ]()| | |
+| [Day  6: Lanternfish ](https://github.com/franmosteiro/advent-of-code/tree/main/2021/day-0)| | |
+| [Day  7: The Treachery of Whales ](https://github.com/franmosteiro/advent-of-code/tree/main/2021/day-07)| | |
+| [Day  8: Seven Segment Search ](https://github.com/franmosteiro/advent-of-code/tree/main/2021/day-08)| | |
+| [Day  9: Smoke Basin ](https://github.com/franmosteiro/advent-of-code/tree/main/2021/day-09)| | |
 | [Day 10: 🚧 ]()| | |
 | [Day 11: 🚧 ]()| | |
 | [Day 12: 🚧 ]()| | |
