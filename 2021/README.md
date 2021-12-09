@@ -14,7 +14,7 @@ Advent of Code 2021 🎄 Ruby Solutions
 | ✅ [Day 2: Dive!](https://github.com/franmosteiro/advent-of-code/tree/main/2021/day-02)| 🌟 | 🌟 |
 | ✅ [Day 3: Binary Diagnostic](https://github.com/franmosteiro/advent-of-code/tree/main/2021/day-03)| 🌟 | 🌟 |
 | ✅ [Day  4: Giant Squid ](https://github.com/franmosteiro/advent-of-code/tree/main/2021/day-04)| 🌟 | 🌟 |
-| [Day  5: 🚧 ]()| | |
+| [Day  5: Hydrothermal Venture ](https://github.com/franmosteiro/advent-of-code/tree/main/2021/day-05)| 🌟 | |
 | [Day  6: 🚧 ]()| | |
 | [Day  7: 🚧 ]()| | |
 | [Day  8: 🚧 ]()| | |
